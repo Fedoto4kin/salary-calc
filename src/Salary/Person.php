@@ -2,6 +2,8 @@
 
 namespace App\Salary;
 
+use App\Salary\Action;
+
 
 class PersonAttribute {
 
@@ -52,7 +54,7 @@ class Person {
         if ($age > 0)
             $this->age = new PersonAttribute('Age', $age);
             if ($age > 50)
-                $this->Salary->updateSalary(\App\Salary\Action\IncreaseValuePercent::class, 7);
+                $this->Salary->updateSalary(Action\IncreaseValuePercent::class, 7);
         return $this;
     }
 
@@ -64,7 +66,7 @@ class Person {
         if ($kids >= 0)
             $this->kids = new PersonAttribute('Kids', $kids);
             if ($kids > 2)
-                $this->Salary->updateTax(\App\Salary\Action\DecreaseValue::class, 2);
+                $this->Salary->updateTax(Action\DecreaseValue::class, 2);
         return $this;
     }
 
@@ -75,7 +77,7 @@ class Person {
     public function useCar(bool $use_car): Person {
         $this->use_car = new PersonAttribute('useCar', $use_car);
         if ($use_car)
-            $this->Salary->updateSalary(\App\Salary\Action\DecreaseValue::class, 500);
+            $this->Salary->updateSalary(Action\DecreaseValue::class, 500);
         return $this;
     }
 
