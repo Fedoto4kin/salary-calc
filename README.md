@@ -54,8 +54,8 @@ Or [configure the Web-server for run Symfony](https://symfony.com/doc/current/se
 
 ### Usage 
 
-For use API you need to send POST Request on root url
-Post request must contains:
+Call an API  using POST method on base url.
+Request must contain the following information in Request Body:
 
 Field | Type | Description
 --- | --- | --- 
@@ -65,8 +65,10 @@ Field | Type | Description
 `kids` | Int |  Count of person's children [**optional**]
 `use_car` | Bool |  If field exists and has ANY value(Note: including 0, False etc) it means person is using a company car [**optional**]
 
-Response is JSON
-
+Response will be JSON
+```json
+{"result": "Salary of %NAME%  after all bonuses, deductions and tax is %1234%"}
+```
 #### Usage samples (using Curl and symfony server)
 
 >Alice is 26 years old, she has 2 kids and her salary is $6000
