@@ -26,7 +26,7 @@ class SalaryController extends AbstractController {
             $salary = new Salary\Salary($gross);
             $Person = new Salary\Person($name, $salary);
             $Person->age($age)->useCar($use_car)->kids($kids);
-            $net_salary = $Person->calc();
+            $net_salary = $Person->salaryCalc();
 
             return $this->json(['result' =>
                 "Salary of $name  after all bonuses, deductions and tax is $net_salary"

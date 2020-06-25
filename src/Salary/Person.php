@@ -3,7 +3,6 @@
 namespace App\Salary;
 
 use App\Salary\Action;
-use App\Salary\Salary;
 
 
 class PersonAttribute {
@@ -36,14 +35,14 @@ class Person {
     /**
      * Person constructor.
      * @param string $name Name of employee
-     * @param $gross Gross salary before bonuses, deductions and tax
+     * @param Salary $salary object
      */
     public function __construct(string $name, Salary $salary) {
         $this->name = $name;
         $this->Salary = $salary;
     }
-
-    public function calc() {
+    
+    public function salaryCalc() {
         return $this->Salary->calc();
     }
 

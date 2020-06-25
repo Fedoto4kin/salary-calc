@@ -19,7 +19,7 @@ class PersonTest extends TestCase {
          */
 
         $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->calc();
+        $salary = $John->salaryCalc();
         $this->assertEquals(800, $salary);
     }
 
@@ -29,7 +29,7 @@ class PersonTest extends TestCase {
          * when kids >= 2
          */
         $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->kids(3)->calc();
+        $salary = $John->kids(3)->salaryCalc();
         $this->assertEquals(820, $salary);
 
     }
@@ -40,7 +40,7 @@ class PersonTest extends TestCase {
          * and ordered tax 20%
          */
         $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->useCar(true)->calc();
+        $salary = $John->useCar(true)->salaryCalc();
         $this->assertEquals(400, $salary);
 
     }
@@ -51,7 +51,7 @@ class PersonTest extends TestCase {
          * and ordered tax 20%
          */
         $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->age(51)->calc();
+        $salary = $John->age(51)->salaryCalc();
         $this->assertEquals(856, $salary);
 
     }
