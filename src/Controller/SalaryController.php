@@ -20,8 +20,7 @@ class SalaryController extends AbstractController {
             $age = (int) $request->request->get('age');
             $kids = (int) $request->request->get('kids', 0);
 
-            $use_car = (bool) $request->request->get('use_car', false);
-
+            $use_car = $request->request->has('use_car');
             $gross = (int) $request->request->get('gross');
 
             $Person = new Salary\Person($name, $gross);
