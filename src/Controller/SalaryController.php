@@ -23,7 +23,8 @@ class SalaryController extends AbstractController {
             $use_car = $request->request->has('use_car');
             $gross = (int) $request->request->get('gross');
 
-            $Person = new Salary\Person($name, $gross);
+            $salary = new Salary\Salary($gross);
+            $Person = new Salary\Person($name, $salary);
             $Person->age($age)->useCar($use_car)->kids($kids);
             $net_salary = $Person->calc();
 
