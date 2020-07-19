@@ -4,29 +4,28 @@ namespace App\Salary;
 
 use App\Salary\Action;
 
-
-class PersonAttribute {
-
+class PersonAttribute
+{
     public $name;
     public $value;
 
-    public function __construct(string $name, $value) {
+    public function __construct(string $name, $value)
+    {
         $this->name = $name;
         $this->value = $value;
     }
 
-    public function getValue() {
-        return  $this->value;
+    public function getValue()
+    {
+        return $this->value;
     }
-
 }
 
-class Person {
-
-    private $name;
-
+class Person
+{
     private $age;
     private $kids;
+    private $name;
     private $use_car;
     /* Allow to add more properties for bonus, deduction or tax change */
 
@@ -37,12 +36,14 @@ class Person {
      * @param string $name Name of employee
      * @param Salary $salary object
      */
-    public function __construct(string $name, Salary $salary) {
+    public function __construct(string $name, Salary $salary)
+    {
         $this->name = $name;
         $this->Salary = $salary;
     }
-    
-    public function salaryCalc() {
+
+    public function salaryCalc()
+    {
         return $this->Salary->calc();
     }
 
@@ -50,11 +51,14 @@ class Person {
      * @param integer $age
      * @return Person
      */
-    public function age(int $age): Person {
-        if ($age > 0)
+    public function age(int $age): Person
+    {
+        if ($age > 0) {
             $this->age = new PersonAttribute('Age', $age);
-            if ($age > 50)
-                $this->Salary->updateSalary(Action\IncreaseValuePercent::class, 7);
+        }
+        if ($age > 50) {
+            $this->Salary->updateSalary(Action\IncreaseValuePercent::class, 7);
+        }
         return $this;
     }
 
@@ -62,11 +66,14 @@ class Person {
      * @param int $kids
      * @return Person
      */
-    public function kids(int $kids): Person {
-        if ($kids >= 0)
+    public function kids(int $kids): Person
+    {
+        if ($kids >= 0) {
             $this->kids = new PersonAttribute('Kids', $kids);
-            if ($kids > 2)
-                $this->Salary->updateTax(Action\DecreaseValue::class, 2);
+        }
+        if ($kids > 2) {
+            $this->Salary->updateTax(Action\DecreaseValue::class, 2);
+        }
         return $this;
     }
 
@@ -74,11 +81,12 @@ class Person {
      * @param bool $use_car
      * @return Person
      */
-    public function useCar(bool $use_car): Person {
+    public function useCar(bool $use_car): Person
+    {
         $this->use_car = new PersonAttribute('useCar', $use_car);
-        if ($use_car)
+        if ($use_car) {
             $this->Salary->updateSalary(Action\DecreaseValue::class, 500);
+        }
         return $this;
     }
-
 }

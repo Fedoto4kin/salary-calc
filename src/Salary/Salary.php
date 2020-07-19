@@ -3,31 +3,34 @@
 
 namespace App\Salary;
 
-
-class Salary {
-
+class Salary implements iSalary
+{
     private $tax = 20;
     private $amount;
 
-    public function __construct($gross) {
+    public function __construct($gross)
+    {
         $this->amount = $gross;
     }
 
-    public function updateSalary($method, $value) {
+    public function updateSalary($method, $value)
+    {
         $method::up($this->amount, $value);
     }
 
-    public function updateTax($method, $value) {
+    public function updateTax($method, $value)
+    {
         $method::up($this->tax, $value);
     }
 
-    public function calc() {
+    public function calc()
+    {
         $this->applyTax();
         return $this->amount;
     }
 
-    private function applyTax() {
-        $this->amount -= $this->amount * ($this->tax/100);
+    private function applyTax()
+    {
+        $this->amount -= $this->amount * ($this->tax / 100);
     }
-
 }

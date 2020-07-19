@@ -3,8 +3,7 @@
 
 namespace App\Salary;
 
-interface iRule {
-    static function up(&$var, $value);
+interface iRule
+{
+    public static function up(&$var, $value);
 }
-
-
