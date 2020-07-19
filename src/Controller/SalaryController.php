@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Salary;
@@ -19,7 +20,6 @@ class SalaryController extends AbstractController
             $name = $request->request->get('name');
             $age = (int)$request->request->get('age');
             $kids = (int)$request->request->get('kids', 0);
-
             $use_car = $request->request->has('use_car');
             $gross = (int)$request->request->get('gross');
 
@@ -28,13 +28,14 @@ class SalaryController extends AbstractController
             $Person->age($age)->useCar($use_car)->kids($kids);
             $net_salary = $Person->salaryCalc();
 
-            return $this->json(['result' =>
-                "Salary of $name  after all bonuses, deductions and tax is $net_salary"
+            return $this->json([
+                'message' => "Salary of $name after all bonuses, deductions and tax is $net_salary"
             ]);
         } else {
-            return $this->json(['result' =>
+            return $this->json(['message' =>
                 "For Salary calculate you need to make a POST request"
             ]);
+
         }
     }
 }
