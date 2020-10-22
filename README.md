@@ -28,7 +28,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
 ```sh
-git clone git@github.com:Fedoto4kin/test-realforce.git %you-target-install-dir%
+git clone git@github.com:Fedoto4kin/salary-calc.git %you-target-install-dir%
 ```
 2. Install symfony framework
 ```sh
