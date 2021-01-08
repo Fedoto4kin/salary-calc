@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Salary;
+use App\Salary\Salary;
+use App\Salary\Person;
 
 class SalaryController extends AbstractController
 {
@@ -17,14 +17,15 @@ class SalaryController extends AbstractController
     public function index(Request $request)
     {
         if ($request->getMethod() == 'POST') {
+            
             $name = $request->request->get('name');
-            $age = (int)$request->request->get('age');
-            $kids = (int)$request->request->get('kids', 0);
+            $age = (int) $request->request->get('age');
+            $kids = (int) $request->request->get('kids', 0);
             $use_car = $request->request->has('use_car');
-            $gross = (int)$request->request->get('gross');
+            $gross = (int) $request->request->get('gross');
 
-            $salary = new Salary\Salary($gross);
-            $Person = new Salary\Person($name, $salary);
+            $Salary = new Salary($gross);
+            $Person = new Person($name, $Salary);
             $Person->age($age)->useCar($use_car)->kids($kids);
             $net_salary = $Person->salaryCalc();
 
