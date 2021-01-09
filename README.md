@@ -38,6 +38,8 @@ composer update
 
 ### Tests (Optional)
 
+Set "framework.test" config to true
+
 ```sh
 cd %you-target-install-dir%
 bin/phpunit
@@ -69,9 +71,10 @@ Response will be JSON
 ```json
 {"message": "Salary of %NAME%  after all bonuses, deductions and tax is %1234%"}
 ```
-#### Usage samples (using Curl and symfony server)
+#### Usage samples (using Curl and server run on 127.0.0.1 and port 8000)
 
 >Alice is 26 years old, she has 2 kids and her salary is $6000
+
 
 ```sh
 curl -d 'name=Alice&age=26&kids=2&gross=6000' -X POST https://127.0.0.1:8000/
