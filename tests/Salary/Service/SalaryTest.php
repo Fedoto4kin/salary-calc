@@ -2,13 +2,13 @@
 
 namespace App\Tests\Salary;
 
-use App\Salary\Salary;
-use App\Salary\Action;
+use App\Service\Salary\Salary;
+use App\Service\Salary\Action;
 use PHPUnit\Framework\TestCase;
 
 class SalaryTest extends TestCase
 {
-    private $Salary;
+    private Salary $Salary;
 
     public function setUp()
     {

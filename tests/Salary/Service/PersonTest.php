@@ -2,16 +2,30 @@
 
 namespace App\Tests\Salary;
 
-use App\Salary;
+use App\Service\Salary\Person;
 use PHPUnit\Framework\TestCase;
 
 class PersonTest extends TestCase
 {
-    private $salaryObj;
+    private Person $john;
 
-    public function setUp()
+    protected function setUp()
     {
-        $this->salaryObj = new Salary\Salary(1000);
+        $this->john = new Person('John', 1000.00);
+    }
+
+    public function testGetMessage()
+    {
+        $this->assertEquals(
+             sprintf(Person::MSG_TPL, 'John', 1000.00),
+             $this->john->getMessage()
+        );
+    }
+
+    public function getPersonSalary()
+    {
+        $salary = $this->john->getPersonSalary();
+        $this->assertEquals(1000.00, $salary);
     }
 
     public function testPersonPlainTax()
@@ -19,9 +33,8 @@ class PersonTest extends TestCase
         /**
          * Calculate salary after tax 20%
          */
-
-        $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->salaryCalc();
+        $this->john->salaryCalc();
+        $salary = $this->john->getPersonSalary();
         $this->assertEquals(800, $salary);
     }
 
@@ -31,8 +44,8 @@ class PersonTest extends TestCase
          * Calculate salary after tax 18% (-2%)
          * when kids >= 2
          */
-        $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->kids(3)->salaryCalc();
+        $this->john->kids(3)->salaryCalc();
+        $salary = $this->john->getPersonSalary();
         $this->assertEquals(820, $salary);
     }
 
@@ -42,8 +55,8 @@ class PersonTest extends TestCase
          * Calculate salary after -500 deduct for using a company car
          * and ordered tax 20%
          */
-        $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->useCar(true)->salaryCalc();
+        $this->john->useCar(true)->salaryCalc();
+        $salary = $this->john->getPersonSalary();
         $this->assertEquals(400, $salary);
     }
 
@@ -53,8 +66,9 @@ class PersonTest extends TestCase
          * Calculate salary after 7% bonus for ages more then 50
          * and ordered tax 20%
          */
-        $John = new Salary\Person('John', $this->salaryObj);
-        $salary = $John->age(51)->salaryCalc();
+        $this->john->age(51)->salaryCalc();
+        $salary = $this->john->getPersonSalary();
         $this->assertEquals(856, $salary);
     }
+
 }

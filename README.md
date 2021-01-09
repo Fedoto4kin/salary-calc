@@ -74,17 +74,17 @@ Response will be JSON
 >Alice is 26 years old, she has 2 kids and her salary is $6000
 
 ```sh
-curl -d 'name=Alice&age=26&kids=2&gross=6000' -X POST http://127.0.0.1:8000/
+curl -d 'name=Alice&age=26&kids=2&gross=6000' -X POST https://127.0.0.1:8000/
 {"message":"Salary of Alice  after all bonuses, deductions and tax is 4800"}
 ```
 
 >Bob is 52, he is using a company car and his salary is $4000
 ```sh
-curl -d 'name=Bob&age=49&use_car&gross=4000' -X POST http://127.0.0.1:8000/
+curl -d 'name=Bob&age=49&use_car&gross=4000' -X POST https://127.0.0.1:8000/
 {"message":"Salary of Bob  after all bonuses, deductions and tax is 2800"}
 ```
 >Charlie is 36, he has 3 kids, company car and his salary is $5000
 ```sh
-curl -d 'name=Charlie&age=36&use_car=1&kids=3&gross=5000' -X POST http://127.0.0.1:8000/
+curl -d 'name=Charlie&age=36&use_car=1&kids=3&gross=5000' -X POST https://127.0.0.1:8000/
 {"message":"Salary of Charlie  after all bonuses, deductions and tax is 3690"}
 ```

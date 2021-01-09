@@ -2,7 +2,7 @@
 
 namespace App\Tests\Salary;
 
-use App\Salary\Action;
+use App\Service\Salary\Action;
 use PHPUnit\Framework\TestCase;
 
 class SalaryActionTest extends TestCase
@@ -11,7 +11,7 @@ class SalaryActionTest extends TestCase
     {
         $val = 100;
         $percents = 5;
-        Action\IncreaseValuePercent::up($val, $percents);
+        Action\IncreaseValuePercent::update($val, $percents);
         $this->assertEquals(105, $val);
     }
 
@@ -19,7 +19,7 @@ class SalaryActionTest extends TestCase
     {
         $val = 100;
         $percents = 5;
-        Action\DecreaseValuePercent::up($val, $percents);
+        Action\DecreaseValuePercent::update($val, $percents);
         $this->assertEquals(95, $val);
     }
 
@@ -27,7 +27,7 @@ class SalaryActionTest extends TestCase
     {
         $val = 100;
         $decr = 50;
-        Action\DecreaseValue::up($val, $decr);
+        Action\DecreaseValue::update($val, $decr);
         $this->assertEquals(50, $val);
     }
 
@@ -35,7 +35,7 @@ class SalaryActionTest extends TestCase
     {
         $val = 100;
         $incr = 50;
-        Action\IncreaseValue::up($val, $incr);
+        Action\IncreaseValue::update($val, $incr);
         $this->assertEquals(150, $val);
     }
 }
