@@ -33,7 +33,7 @@ git clone git@github.com:Fedoto4kin/salary-calc.git %you-target-install-dir%
 2. Install symfony framework
 ```sh
 cd %you-target-install-dir%
-composer update
+composer install
 ```
 
 ### Tests (Optional)
